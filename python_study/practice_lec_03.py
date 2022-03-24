@@ -97,7 +97,7 @@
 # print(randint(1, 45)) # 1 부터 45 까지의 임의의 값을 생성. (정수)
 # print(randint(1, 45)) # 1 부터 45 까지의 임의의 값을 생성. (정수)
 
-#Quiz
+# Quiz
 
 from random import *
 offline_day = randint(4, 28)
