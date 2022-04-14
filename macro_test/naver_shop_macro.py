@@ -18,7 +18,7 @@ login_pw = config['NAVER']['PW']
 # 구매 물품 link
 url = 'https://brand.naver.com/samlip/products/6510954368' # 삼립 포켓몬 빵
 
-#url = "https://brand.naver.com/samlip/products/5715097149"
+url = 'https://smartstore.naver.com/allchanfood/products/6362403787' # 샤니
 
 # 브라우저 기동 후 네이버 이동.
 driver = webdriver.Chrome('D:/chromedriver')
@@ -64,12 +64,15 @@ while True:
 
         if aa == '_2-uvQuRWK5':
             winsound.Beep(440, 1000) # 주문 버튼이 나타나면 경고음 발생.
+            print("주문 버튼 찾았음." + time.strftime('%Y.%m.%d - %H:%M:%S'))
             break
         else:
             driver.refresh() # 브라우저 새로 고침
+            print("브라우져 새로 고침." + time.strftime('%Y.%m.%d - %H:%M:%S'))
             time.sleep(1)            
     except Exception:
         driver.refresh()  # 브라우저 새로 고침.
-        time.sleep(1)
+        print("in Exception 브라우져 새로 고침." + time.strftime('%Y.%m.%d - %H:%M:%S'))
+        time.sleep(0.7) # 와.. 한번을 안 걸리네;;;
 
 
