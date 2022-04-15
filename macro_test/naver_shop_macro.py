@@ -18,7 +18,9 @@ login_pw = config['NAVER']['PW']
 # 구매 물품 link
 url = 'https://brand.naver.com/samlip/products/6510954368' # 삼립 포켓몬 빵
 
-url = 'https://smartstore.naver.com/allchanfood/products/6362403787' # 샤니
+# url = 'https://smartstore.naver.com/allchanfood/products/6362403787' # 샤니
+
+# url = 'https://smartstore.naver.com/allchanfood/products/4241129373' # 구매버튼 눌러지는지 테스트
 
 # 브라우저 기동 후 네이버 이동.
 driver = webdriver.Chrome('D:/chromedriver')
@@ -60,7 +62,12 @@ driver.set_window_size(1200, 1080)
 while True:
     try:
         xpath = "//div[@class='OgETmrvExa N=a:pcs.buy']/a"
-        aa = driver.find_element_by_xpath(xpath).get_attribute("class")
+        aa = driver.find_element_by_xpath(xpath)
+
+        # 보이면 바로 주문버튼 클릭하고 보자
+        aa.click()
+        winsound.Beep(440, 1000) # 주문 버튼이 나타나면 경고음 발생.
+        break
 
         if aa == '_2-uvQuRWK5':
             winsound.Beep(440, 1000) # 주문 버튼이 나타나면 경고음 발생.
@@ -69,7 +76,8 @@ while True:
         else:
             driver.refresh() # 브라우저 새로 고침
             print("브라우져 새로 고침." + time.strftime('%Y.%m.%d - %H:%M:%S'))
-            time.sleep(1)            
+            time.sleep(1)
+
     except Exception:
         driver.refresh()  # 브라우저 새로 고침.
         print("in Exception 브라우져 새로 고침." + time.strftime('%Y.%m.%d - %H:%M:%S'))
