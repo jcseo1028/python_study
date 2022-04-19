@@ -78,8 +78,7 @@ print(item_url)
 while True:
     for one_url in item_url:
         driver.get(one_url)
-        time.sleep(0.5)
-    
+        time.sleep(0.5)    
 
         # 여기서 선택 버튼을 클릭 후 아이템에 원하는 상품이 있는 지 체크
         try:
@@ -99,7 +98,7 @@ while True:
                     exit()
             
         except Exception:
-            # 이건 왜 에러나는 거지
+            # 이건 왜 에러나는 거지 -> 단일 상품인 듯.
             print("Exception Page :" + one_url)
             continue
 
