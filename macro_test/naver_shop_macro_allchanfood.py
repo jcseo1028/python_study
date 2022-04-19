@@ -90,6 +90,7 @@ while True:
 
             bFind = False
             for opt_item in items:
+                print(opt_item.text)
                 if opt_item.text.find("포켓몬") != -1 and opt_item.text.find("품절") == -1:
                     print(opt_item.text)
                     print(one_url)
