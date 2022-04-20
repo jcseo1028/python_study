@@ -68,6 +68,19 @@ driver.set_window_size(1200, 1080)
 # 현재 페이지 내 모든 상품 링크 리스트화
 li_list = driver.find_elements_by_xpath("//a[@class='_3BkKgDHq3l N=a:all.product linkAnchor']")
 item_url = [] 
+
+# 이미 링크가 확보된 사이트 우선추가
+item_url.append('https://smartstore.naver.com/allchanfood/products/6470240152')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6445085619')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6445312309')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6507478368')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6445203510')
+item_url.append('http://naver.me/Ge3p5HFQ')
+item_url.append('http://naver.me/IIZEmPVz')
+item_url.append('http://naver.me/xVQb3fkl')
+item_url.append('http://naver.me/GRfwzvAW')
+item_url.append('http://naver.me/GrMtqAxO')
+
 print("count : {0}".format(len(li_list)))
 time.sleep(1)
 for item in li_list:
@@ -90,7 +103,8 @@ while True:
 
             bFind = False
             for opt_item in items:
-                print(opt_item.text)
+                if opt_item.text.find("포켓몬") != -1:
+                    print(opt_item.text)
                 if opt_item.text.find("포켓몬") != -1 and opt_item.text.find("품절") == -1:
                     print(opt_item.text)
                     print(one_url)
