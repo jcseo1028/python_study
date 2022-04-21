@@ -82,9 +82,9 @@ item_url.append('http://naver.me/GRfwzvAW')
 item_url.append('http://naver.me/GrMtqAxO')
 
 print("count : {0}".format(len(li_list)))
-time.sleep(1)
-for item in li_list:
-    item_url.append(item.get_attribute("href"))
+# time.sleep(1)
+# for item in li_list:
+#     item_url.append(item.get_attribute("href"))
     
 print(item_url)
 
@@ -107,7 +107,7 @@ while True:
                     print(opt_item.text)
                 if opt_item.text.find("포켓몬") != -1 and opt_item.text.find("품절") == -1:
                     print(opt_item.text)
-                    print(one_url)
+                    print("04/21 : " + one_url)
                     opt_item.click()
                     winsound.Beep(440, 1000) # 주문 버튼이 나타나면 경고음 발생.
                     exit()
