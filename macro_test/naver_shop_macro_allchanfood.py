@@ -31,6 +31,8 @@ login_pw = config['NAVER']['PW']
 
 # url = 'https://smartstore.naver.com/allchanfood/products/4241129373' # 구매버튼 눌러지는지 테스트
 
+# 04/21 : https://smartstore.naver.com/allchanfood/products/6470240152
+
 url = 'https://smartstore.naver.com/allchanfood/'
 
 # 브라우저 기동 후 네이버 이동.
@@ -75,11 +77,25 @@ item_url.append('https://smartstore.naver.com/allchanfood/products/6445085619')
 item_url.append('https://smartstore.naver.com/allchanfood/products/6445312309')
 item_url.append('https://smartstore.naver.com/allchanfood/products/6507478368')
 item_url.append('https://smartstore.naver.com/allchanfood/products/6445203510')
-item_url.append('http://naver.me/Ge3p5HFQ')
-item_url.append('http://naver.me/IIZEmPVz')
-item_url.append('http://naver.me/xVQb3fkl')
-item_url.append('http://naver.me/GRfwzvAW')
-item_url.append('http://naver.me/GrMtqAxO')
+
+item_url.append('https://smartstore.naver.com/allchanfood/products/6317310782')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6316581397')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6316579255')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6316569456')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6316134527')
+
+item_url.append('https://smartstore.naver.com/allchanfood/products/6333541088')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6507478368')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6470240152')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6445203510')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6469856745')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6445312309')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6445085619')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6317310782')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6316581397')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6316579255')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6316569456')
+item_url.append('https://smartstore.naver.com/allchanfood/products/6316134527')
 
 print("count : {0}".format(len(li_list)))
 # time.sleep(1)
