@@ -51,6 +51,9 @@ tag_mail = driver.find_element(by=By.ID, value='topMenu200000000')
 tag_mail.click()
 time.sleep(0.5)
 
+# 특정 text 를 가지는 Button 찾기
+find_button = driver.find_element(by=By.XPATH, '//button[text() = "가는날"]') # 전체 Element(//) 에서 Text 가 "가는 날" 인 button element 찾기
+
 # 내 편지함 가기
 # tag_mymail = driver.find_element(by=By.CLASS_NAME, value='lbl_mymailbox')
 # tag_mymail = driver.find_element_by_class_name('lbl_mymailbox')
