@@ -142,6 +142,23 @@ while True:
                     pay_value = '//button[text()="결제하기"]'
                     wait_until(pay_value)
 
+                    # 일반 결제로 변경
+                    xpath = '//label[text()="일반결제"]'
+                    aa = driver.find_element(by=By.XPATH, value=xpath)
+                    aa.click()
+                    time.sleep(0.5)
+
+                    # 나중 결제로 변경
+                    xpath = '//label[@class="_payMeanSkipLabel"]'
+                    wait_until(xpath)
+                    aa = driver.find_element(by=By.XPATH, value=xpath)
+                    aa.click()
+                    #time.sleep(0.5)
+
+                    #dum = input("아무키나 누르시오")
+                    # r
+                    pay_value = '//button[text()="주문하기"]' # 결제 방식에 따라 주문하기 또는 결제하기로 Text 바뀜.
+                    wait_until(pay_value)
                     pay_button = driver.find_element(by=By.XPATH, value=pay_value)
                     pay_button.click()
 

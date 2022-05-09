@@ -7,6 +7,12 @@ from selenium.webdriver.common.keys import Keys
 import time
 import pyperclip
 import configparser
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+def wait_until(xpath_str):
+    WebDriverWait(driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, xpath_str)))
  
 config = configparser.ConfigParser()
 config.read('macro_test/config.ini')
@@ -20,7 +26,7 @@ url = 'https://brand.naver.com/samlip/products/6510954368' # 삼립 포켓몬 �
 
 # url = 'https://smartstore.naver.com/allchanfood/products/6362403787' # 샤니
 
-# url = 'https://smartstore.naver.com/allchanfood/products/4241129373' # 구매버튼 눌러지는지 테스트
+# url = 'https://brand.naver.com/samlip/products/5841865395' #  자동 결제 테스트
 
 # 브라우저 기동 후 네이버 이동.
 driver = webdriver.Chrome('D:/chromedriver')
@@ -61,12 +67,38 @@ driver.set_window_size(1200, 1080)
 
 while True:
     try:
-        xpath = "//div[@class='OgETmrvExa N=a:pcs.buy']/a"
-        aa = driver.find_element_by_xpath(xpath)
-
-        # 보이면 바로 주문버튼 클릭하고 보자
+        xpath = '//a[@class="_2-uvQuRWK5"]'
+        # wait_until(xpath)
+        aa = driver.find_element(by=By.XPATH, value=xpath)
+        # 주문 버튼 보이면 일단 주문 버튼 클릭
         aa.click()
-        winsound.Beep(440, 1000) # 주문 버튼이 나타나면 경고음 발생.
+
+        # 결제하기 버튼이 나타날 때까지 대기.
+        pay_value = '//button[text()="결제하기"]'
+        wait_until(pay_value)
+
+        # 일반 결제로 변경
+        xpath = '//label[text()="일반결제"]'
+        aa = driver.find_element(by=By.XPATH, value=xpath)
+        aa.click()
+        time.sleep(0.5)
+
+        # 나중 결제로 변경
+        xpath = '//label[@class="_payMeanSkipLabel"]'
+        wait_until(xpath)
+        aa = driver.find_element(by=By.XPATH, value=xpath)
+        aa.click()
+        #time.sleep(0.5)
+
+        #dum = input("아무키나 누르시오")
+        # r
+        pay_value = '//button[text()="주문하기"]'
+        wait_until(pay_value)
+        pay_button = driver.find_element(by=By.XPATH, value=pay_value)
+        pay_button.click()
+
+        winsound.Beep(440, 1000)
+        dum = input("아무키나 누르시오")
         break
 
         if aa == '_2-uvQuRWK5':
