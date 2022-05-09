@@ -16,6 +16,13 @@ from selenium.webdriver.common.keys import Keys
 import time
 import pyperclip
 import configparser
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+def wait_until(xpath_str):
+    WebDriverWait(driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, xpath_str)))
+
  
 config = configparser.ConfigParser()
 config.read('macro_test/config.ini')
@@ -97,7 +104,7 @@ item_url.append('https://smartstore.naver.com/allchanfood/products/6316579255')
 item_url.append('https://smartstore.naver.com/allchanfood/products/6316569456')
 item_url.append('https://smartstore.naver.com/allchanfood/products/6316134527')
 
-print("count : {0}".format(len(li_list)))
+# print("count : {0}".format(len(li_list)))
 # time.sleep(1)
 # for item in li_list:
 #     item_url.append(item.get_attribute("href"))
@@ -123,8 +130,21 @@ while True:
                     print(opt_item.text)
                 if opt_item.text.find("포켓몬") != -1 and opt_item.text.find("품절") == -1:
                     print(opt_item.text)
-                    print("04/21 : " + one_url)
                     opt_item.click()
+                    
+                    #winsound.Beep(440, 1000) # 주문 버튼이 나타나면 경고음 발생.
+
+                    # 구매버튼 클릭.
+                    pur_button = driver.find_element(by=By.XPATH, value='//a[@class="_2-uvQuRWK5"]')
+                    pur_button.click()
+
+                    # 결제하기 버튼이 나타날 때까지 대기.
+                    pay_value = '//button[text()="결제하기"]'
+                    wait_until(pay_value)
+
+                    pay_button = driver.find_element(by=By.XPATH, value=pay_value)
+                    pay_button.click()
+
                     winsound.Beep(440, 1000) # 주문 버튼이 나타나면 경고음 발생.
                     exit()
             
