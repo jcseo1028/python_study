@@ -26,7 +26,7 @@ url = 'https://brand.naver.com/samlip/products/6510954368' # 삼립 포켓몬 �
 
 # url = 'https://smartstore.naver.com/allchanfood/products/6362403787' # 샤니
 
-# url = 'https://brand.naver.com/samlip/products/5841865395' #  자동 결제 테스트
+# url = 'https://brand.naver.com/samlip/products/5841865395' #  자동 나중 결제 테스트
 
 # 브라우저 기동 후 네이버 이동.
 driver = webdriver.Chrome('D:/chromedriver')
@@ -91,7 +91,6 @@ while True:
         #time.sleep(0.5)
 
         #dum = input("아무키나 누르시오")
-        # r
         pay_value = '//button[text()="주문하기"]'
         wait_until(pay_value)
         pay_button = driver.find_element(by=By.XPATH, value=pay_value)
