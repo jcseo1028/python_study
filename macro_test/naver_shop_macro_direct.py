@@ -26,11 +26,9 @@ login_pw = config['NAVER']['PW']
 # 아래 링크 사용하면 구매하기 버튼 안 기다리고 바로 주문화면으로 들어갈 수 있음.  판매자 ID(510440774) 는 어떻게 알 수 있지? 
 # https://m.pay.naver.com/o/products/510440774/6510954368/purchase?from=https://m.pay.naver.com/
 
-# https://m.pay.naver.com/o/products/510440774/5841865395/purchase?from=https://m.pay.naver.com/ (다른 상품으로 테스트)
-
 url = 'https://m.pay.naver.com/o/products/510440774/6510954368/purchase?from=https://m.pay.naver.com/'
 
-url = 'https://m.pay.naver.com/o/products/510440774/5841865395/purchase?from=https://m.pay.naver.com/' # 다른 상품 테스트
+# url = 'https://m.pay.naver.com/o/products/510440774/5841865395/purchase?from=https://m.pay.naver.com/' # 다른 상품 테스트
 
 # 브라우저 기동 후 네이버 이동.
 driver = webdriver.Chrome('D:/chromedriver')
@@ -59,7 +57,7 @@ tag_pw.send_keys(Keys.CONTROL, 'v')
 
 # 로그인 버튼을 못 찾는데...
 #driver.find_element_by_id('log.ligin').click()
-driver.find_element_by_xpath("//div[@class='btn_login_wrap']").click()
+driver.find_element(by=By.XPATH, value="//div[@class='btn_login_wrap']").click()
 time.sleep(1)
 
 while True:
@@ -71,7 +69,8 @@ while True:
         msg = Alert(driver) # 알람이 안 떴을 경우에는 해당 구문에서 Exception 발생함.
         msg.accept() # 경고창 확인
 
-        time.sleep(0.3)
+        time.sleep(0.5)
+        print("in Alert Accepted..." + time.strftime('%Y.%m.%d - %H:%M:%S'))
         
     except Exception:
         #확인 버튼 찾기.
@@ -79,18 +78,21 @@ while True:
         wait_until(xpath)
         btn = driver.find_element(by=By.XPATH, value=xpath)
         btn.click()
-        time.sleep(0.5)
+        #time.sleep(0.5)
 
+        
+        #driver.set_window_size(400,1080)
+        #driver.execute_script("window.scrollTo(0, 1000)")
+        
         # 일반 결제로 변경
-        driver.set_window_size(400,1080)
-        driver.execute_script("window.scrollTo(0, 1000)")
-        exit()
+        # xpath = '//label[text()="일반결제"]'
+        xpath = '//label[@class="N=a:ode.paygeneral radio_label _payment_label _click(checkout.mobile.order.order_sheet.switchPaymentMethodTab(GENERAL)) _stopDefault"]'
 
-        xpath = '//label[text()="일반결제"]'
         wait_until(xpath)
         ab = driver.find_element(by=By.XPATH, value=xpath)
         ab.click()
-        time.sleep(0.5)
+        #time.sleep(0.5)
+        
 
         # 나중 결제로 변경
         xpath = '//strong[text()="나중에 결제"]'
@@ -98,15 +100,17 @@ while True:
         aa = driver.find_element(by=By.XPATH, value=xpath)
         aa.click()
         #time.sleep(0.5)
-        exit()
+        
 
         #dum = input("아무키나 누르시오")
-        pay_value = '//button[text()="주문하기"]'
+        # pay_value = '//button[text()="주문하기"]'
+        pay_value = '//a[@class="N=a:ode.pay btm_button _click(checkout.mobile.order.order_sheet.create()) _stopDefault _doPayButton"]'
         wait_until(pay_value)
         pay_button = driver.find_element(by=By.XPATH, value=pay_value)
         pay_button.click()
 
         winsound.Beep(440, 1000)
+        exit()
 
         break
 

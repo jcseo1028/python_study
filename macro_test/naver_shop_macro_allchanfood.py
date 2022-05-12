@@ -72,7 +72,7 @@ time.sleep(1)
 
 # 쇼핑몰 판매 사이트로 이동.
 driver.get(url)
-driver.set_window_size(1200, 1080)
+driver.set_window_size(400, 1080)
 
 # 현재 페이지 내 모든 상품 링크 리스트화
 li_list = driver.find_elements_by_xpath("//a[@class='_3BkKgDHq3l N=a:all.product linkAnchor']")
