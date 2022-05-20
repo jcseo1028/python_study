@@ -20,6 +20,9 @@ login_pw = config['NAVER']['PW']
 
 # url = 'https://smartstore.naver.com/allchanfood/'
 
+# 올찬 거 다이렉트 링크 
+# https://m.pay.naver.com/o/products/510440774/6362403787/purchase?from=https://m.pay.naver.com/
+
 url = 'https://smartstore.naver.com/allchanfood/products/6362403787'
 
 # 브라우저 기동 후 네이버 이동.

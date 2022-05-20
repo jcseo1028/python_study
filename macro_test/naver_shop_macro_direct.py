@@ -30,6 +30,9 @@ url = 'https://m.pay.naver.com/o/products/510440774/6510954368/purchase?from=htt
 
 # url = 'https://m.pay.naver.com/o/products/510440774/5841865395/purchase?from=https://m.pay.naver.com/' # 다른 상품 테스트
 
+# 6040884446, 짱구
+url = 'https://m.pay.naver.com/o/products/510440774/6040884446/purchase?from=https://m.pay.naver.com/'
+
 # 브라우저 기동 후 네이버 이동.
 driver = webdriver.Chrome('D:/chromedriver')
 driver.get('https://naver.com')
