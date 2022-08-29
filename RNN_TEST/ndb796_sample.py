@@ -67,14 +67,14 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu") # device
 
 # 데이터셋을 불러올 때 사용할 변형(transformation) 객체 정의
 transforms_train = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.RandomHorizontalFlip(), # 데이터 증진(augmentation)
+    #transforms.Resize((224, 224)),
+    #transforms.RandomHorizontalFlip(), # 데이터 증진(augmentation)
     transforms.ToTensor(),
     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]) # 정규화(normalization)
 ])
 
 transforms_test = transforms.Compose([
-    transforms.Resize((224, 224)),
+    #transforms.Resize((224, 224)),
     transforms.ToTensor(),
     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 ])
@@ -83,8 +83,8 @@ data_dir = './custom_dataset'
 train_datasets = datasets.ImageFolder(os.path.join(data_dir, 'train'), transforms_train)
 test_datasets = datasets.ImageFolder(os.path.join(data_dir, 'test'), transforms_test)
 
-train_dataloader = torch.utils.data.DataLoader(train_datasets, batch_size=4, shuffle=True, num_workers=4)
-test_dataloader = torch.utils.data.DataLoader(test_datasets, batch_size=4, shuffle=True, num_workers=4)
+train_dataloader = torch.utils.data.DataLoader(train_datasets, batch_size=2, shuffle=True, num_workers=2)
+test_dataloader = torch.utils.data.DataLoader(test_datasets, batch_size=2, shuffle=True, num_workers=2)
 
 print('학습 데이터셋 크기:', len(train_datasets))
 print('테스트 데이터셋 크기:', len(test_datasets))
