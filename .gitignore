@@ -12,3 +12,4 @@ custom_dataset/*
 custom_dataset_3p/*
 download/*
 AutoCrawler/keywords.txt
+RNN_TEST/test_3p_low_model.pt

@@ -151,3 +151,8 @@ with torch.no_grad():
     epoch_loss = running_loss / len(test_datasets)
     epoch_acc = running_corrects / len(test_datasets) * 100.
     print('[Test Phase] Loss: {:.4f} Acc: {:.4f}% Time: {:.4f}s'.format(epoch_loss, epoch_acc, time.time() - start_time))
+
+
+torch.save(model.state_dict(), './RNN_TEST/test_3p_low_model.pt')
+print('state_dict format of the model: {}'.format(model.state_dict()))
+
