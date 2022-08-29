@@ -11,3 +11,4 @@ macro_test/config.ini
 custom_dataset/*
 custom_dataset_3p/*
 download/*
+AutoCrawler/keywords.txt
