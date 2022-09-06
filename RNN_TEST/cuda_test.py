@@ -21,5 +21,9 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu") # device
 # CUDA Toolkit 10.2 로 해야 하나? -> Pytorch 에서 지원하지 않음. 
 # 11.7 설치해도 안되네...
 #  
+
+# 11.3 으로 다시 해보자
+# https://pytorch.org/get-started/locally/
+
 print(device)
 print(torch.cuda.is_available())
