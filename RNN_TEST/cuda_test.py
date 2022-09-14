@@ -34,3 +34,10 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu") # device
 
 print(device)
 print(torch.cuda.is_available())
+print(torch.__version__)
+print(torch.cuda.get_arch_list())
+print(torch.version.cuda)
+
+# Pytorch 환경 출력 방법
+#  > python -m torch.utils.collect_env
+# 설치할 거는 다 한거 같은데... CUDA Available 이 되지 않는구먼...
