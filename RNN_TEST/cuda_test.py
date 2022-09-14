@@ -24,10 +24,10 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu") # device
 
 # 11.3 으로 다시 해보자
 # https://pytorch.org/get-started/locally/
-### pytorch : 1.12.1, cuda : 11.3 환경은 맞다고 하는데 실행은 되지 않음. (vpp 안보임.)
+### pytorch : 1.12.1, cuda : 11.3 환경은 맞다고 하는데 실행은 되지 않음. (nvcc --version)
 ### pytorch : 1.12.1, cuda : 11.6 으로 다시 해보자..
-### cuda 11.6.2 재설치 -> 역시나 되지 않음.
-### 이것도 안되면 cudnn? 까지 재확인 필요.
+### cuda 11.6.2 재설치 
+### cudnn 8.5.0 -> 역시나 되지 않음. ???
 
 # https://normal-engineer.tistory.com/163
 # # Graphic Driver 재설치
