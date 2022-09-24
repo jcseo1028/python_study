@@ -41,3 +41,10 @@ print(torch.version.cuda)
 # Pytorch 환경 출력 방법
 #  > python -m torch.utils.collect_env
 # 설치할 거는 다 한거 같은데... CUDA Available 이 되지 않는구먼...
+
+
+# Code Project 에서 11.7 로 다시 함 해보자.
+# https://www.codeproject.com/Articles/5322557/CodeProject-AI-Server-AI-the-easy-way
+# 1. install the CUDA 11.7 Drivers
+# 2. install CUDA Toolkit 11.7
+# 3. Download and run our cuDNN install script to install cuDNN.
