@@ -6,6 +6,8 @@ import os                         # 운영체제와 상호작용하기 위한 �
 
 ################# 부가 기능 수행(일꾼) #####################################
 from kiwoom import Kiwoom          # 키움증권 함수/공용 방 (싱글턴)
+from Qthread_1 import Thread1      # 계좌평가 잔고내역 가져오기
+from Qthread_2 import Thread2      # 계좌 관리
 
 #=================== 프로그램 실행 프로그램 =========================#
 
@@ -24,11 +26,25 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
         form_class.__init__(self)                            # 상속 받은 from_class를 실행하기 위한 초기값(초기화)
         self.setUI()                                         # UI 초기값 셋업 반드시 필요
 
+        ### 초기 셋팅
+        self.label_11.setText(str("총매입금액"))
+        self.label_12.setText(str("총평가금액"))
+        self.label_13.setText(str("추정예탁자산"))
+        self.label_14.setText(str("총평가손익금액"))
+        self.label_15.setText(str("총수익률(%)"))
+
+        ####기타함수
+        self.login_event_loop = QEventLoop()  # QEventLoop 객체 초기화
+
         ####키움증권 로그인 하기
         self.k = Kiwoom()                     # Kiwoom()을 실행하며 상속 받는다. Kiwoom()은 전지적인 아이다.
-        self.login_event_loop = QEventLoop()  # QEventLoop 객체 초기화
+
         self.set_signal_slot()
         self.signal_login_commConnect()
+
+        #### 이벤트 생성 및 진행
+        self.call_account.clicked.connect(self.c_acc)   # 계좌 정보 가져오기
+        self.acc_manage.clicked.connect(self.a_manage)  # 계좌 관리하기
 
     def setUI(self):
         self.setupUi(self)                # UI 초기값 셋업
@@ -44,18 +60,35 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
         if errCode == 0:
             print("로그인 성공")
             self.statusbar.showMessage("로그인 성공")
+            self.get_account_info()     # 로그인 시 계좌정보 가져오기
+
         elif errCode == 100:
             print("사용자 정보교환 실패")
+
         elif errCode == 101:
             print("서버접속 실패")
+
         elif errCode == 102:
             print("버전처리 실패")
-        self.login_event_loop.exit()
+
+        self.login_event_loop.exit()    # 로그인이 완료되면 로그인 창을 닫는다.
 
     def get_account_info(self):
         account_list = self.k.kiwoom.dynamicCall("GetLoginInfo(String)", "ACCNO")
+
         for n in account_list.split(';'):
             self.accComboBox.addItem(n)
+
+    def c_acc(self):
+        print("선택 계좌 정보 가져오기")
+        ##### 1번 일꾼 실행
+        h1 = Thread1(self)
+        h1.start()
+
+    def a_manage(self):
+        print("계좌 관리")
+        h2 = Thread2(self)
+        h2.start()
 
 if __name__=='__main__':             # import된 것들을 실행시키지 않고 __main__에서 실행하는 것만 실행 시킨다.
                                      # 즉 import된 다른 함수의 코드를 이 화면에서 실행시키지 않겠다는 의미이다.
