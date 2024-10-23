@@ -8,7 +8,7 @@ import os                         # 운영체제와 상호작용하기 위한 �
 from kiwoom import Kiwoom          # 키움증권 함수/공용 방 (싱글턴)
 from Qthread_1 import Thread1      # 계좌평가 잔고내역 가져오기
 from Qthread_2 import Thread2      # 계좌 관리
-
+from Qthread_3 import Thread3      # 자동 매매 시작
 #=================== 프로그램 실행 프로그램 =========================#
 
 # Get the absolute path of the current file
@@ -34,17 +34,17 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
         self.label_15.setText(str("총수익률(%)"))
 
         ####기타함수
-        self.login_event_loop = QEventLoop()  # QEventLoop 객체 초기화
+        self.login_event_loop = QEventLoop()    # QEventLoop 객체 초기화
 
         ####키움증권 로그인 하기
-        self.k = Kiwoom()                     # Kiwoom()을 실행하며 상속 받는다. Kiwoom()은 전지적인 아이다.
-
-        self.set_signal_slot()
+        self.k = Kiwoom()                       # Kiwoom()을 실행하며 상속 받는다. Kiwoom()은 전지적인 아이다.
+        self.set_signal_slot()                  # 키움 로그인을 위한 명령어 전송 시 미리 받는 공간을 생성한다.
         self.signal_login_commConnect()
 
         #### 이벤트 생성 및 진행
         self.call_account.clicked.connect(self.c_acc)   # 계좌 정보 가져오기
         self.acc_manage.clicked.connect(self.a_manage)  # 계좌 관리하기
+        self.Auto_start.clicked.connect(self.auto)      # 자동매매 시작
 
         ################# 부가기능 1 : 종목선택하기 새로운 종목 추가 및 삭제
         self.k.kiwoom.OnReceiveTrData.connect(self.trdata_slot)  # 키움서버 데이터 받는 곳
@@ -71,13 +71,17 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
                     t_code = ls[0]
                     t_name = ls[1]
                     curren_price = ls[2]
-                    dept = ls[3].split("\n")[0]
+                    dept = ls[3]
+                    mesu = ls[4]
+                    n_o_stock = ls[5]
+                    profit = ls[6]
+                    loss = ls[7].split("\n")[0]
 
-                    self.Getanal_code.append([t_code, t_name, curren_price, dept])
+                    self.Getanal_code.append([t_code, t_name, curren_price, dept, mesu, n_o_stock, profit, loss])
 
             f.close()
 
-        column_head = ["종목코드", "종목명", "현재가", "신용비율"]
+        column_head = ["종목코드", "종목명", "현재가", "신용비율", "매수가", "매수수량", "익절가", "손절가"]
         colCount = len(column_head)
         rowCount = len(self.Getanal_code)
 
@@ -92,6 +96,11 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
             self.buylast.setItem(index, 2, QTableWidgetItem(str(self.Getanal_code[index][2])))
             self.buylast.setItem(index, 3, QTableWidgetItem(str(self.Getanal_code[index][3])))
 
+            self.buylast.setItem(index, 4, QTableWidgetItem(str(self.Getanal_code[index][4])))
+            self.buylast.setItem(index, 5, QTableWidgetItem(str(self.Getanal_code[index][5])))
+            self.buylast.setItem(index, 6, QTableWidgetItem(str(self.Getanal_code[index][6])))
+            self.buylast.setItem(index, 7, QTableWidgetItem(str(self.Getanal_code[index][7])))
+
     def Save_selected_code(self):
 
         for row in range(self.buylast.rowCount()):
@@ -100,8 +109,13 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
             price = self.buylast.item(row, 2).text()
             dept = self.buylast.item(row, 3).text()
 
+            mesu = self.buylast.item(row, 4).text()
+            n_o_stock = self.buylast.item(row, 5).text()
+            profit = self.buylast.item(row, 6).text()
+            loss = self.buylast.item(row, 7).text()
+
             f = open("dist/Selected_code.txt", "a", encoding="utf8")  # "a" 달아 쓴다. "w" 덮어 쓴다. files라느 파이썬 페키지 볼더를 만든다.
-            f.write("%s\t%s\t%s\t%s\n" % (code_n, name, price, dept))  # t는 tap을 의미한다.
+            f.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (code_n, name, price, dept, mesu, n_o_stock, profit, loss))  # t는 tab을 의미한다.
             f.close()
 
     def delet_code(self):
@@ -115,6 +129,18 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
 
     def searchItem2(self):  # 종목추가시 사용됨.
         itemName = self.searchItemTextEdit2.toPlainText().strip()
+        self.searchItemTextEdit2.setAlignment(Qt.AlignRight)
+
+        '''
+        self.buy_price.setAlignment(Qt.AlignRight)
+        self.buy_price.setDecimals(0)
+        self.n_o_stock.setAlignment(Qt.AlignRight)
+        self.n_o_stock.setDecimals(0)
+        self.profit_price.setAlignment(Qt.AlignRight)
+        self.profit_price.setDecimals(0)
+        self.loss_price.setAlignment(Qt.AlignRight)
+        self.loss_price.setDecimals(0)
+        '''
         self.new_code = "" # 없는 종목을 입력했을 경우, 이전 코드가 들어갈 수 있음.
         if itemName != "":
             for code in self.k.All_Stock_Code.keys():  # 포트폴리오에 저장된 코드들을 실시간 등록
@@ -122,7 +148,7 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
                 if itemName == self.k.All_Stock_Code[code]['종목명']:
                     self.new_code = code
         if(self.new_code.strip() != ""):
-            column_head = ["종목코드", "종목명", "현재가", "신용비율"]
+            column_head = ["종목코드", "종목명", "현재가", "신용비율", "매수가", "매수수량", "익절가", "손절가"]
             colCount = len(column_head)
             row_count = self.buylast.rowCount()
 
@@ -132,6 +158,11 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
 
             self.buylast.setItem(row_count, 0, QTableWidgetItem(str(self.new_code)))  # 실제 입력값은 1행부터이나 0부터 들어가야 된다.
             self.buylast.setItem(row_count, 1, QTableWidgetItem(str(itemName)))
+            ################## 더블 스핀 박스 내용 읽기
+            self.buylast.setItem(row_count, 4, QTableWidgetItem(str(self.buy_price.value())))
+            self.buylast.setItem(row_count, 5, QTableWidgetItem(str(self.n_o_stock.value())))
+            self.buylast.setItem(row_count, 6, QTableWidgetItem(str(self.profit_price.value())))
+            self.buylast.setItem(row_count, 7, QTableWidgetItem(str(self.loss_price.value())))
 
             self.getItemInfo(self.new_code)
         else:
@@ -143,6 +174,15 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
 
     def setUI(self):
         self.setupUi(self)                # UI 초기값 셋업
+
+        self.buy_price.setAlignment(Qt.AlignRight)
+        self.buy_price.setDecimals(0)
+        self.n_o_stock.setAlignment(Qt.AlignRight)
+        self.n_o_stock.setDecimals(0)
+        self.profit_price.setAlignment(Qt.AlignRight)
+        self.profit_price.setDecimals(0)
+        self.loss_price.setAlignment(Qt.AlignRight)
+        self.loss_price.setDecimals(0)
 
     def set_signal_slot(self):
         self.k.kiwoom.OnEventConnect.connect(self.login_slot)
@@ -184,6 +224,11 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
         print("계좌 관리")
         h2 = Thread2(self)
         h2.start()
+
+    def auto(self):
+        print("자동매매 시작")
+        h3 = Thread3(self)
+        h3.start()
 
     def trdata_slot(self, sScrNo, sRQName, sTrCode, sRecordName, sPrevNext):
 

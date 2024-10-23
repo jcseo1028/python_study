@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1270</width>
+    <height>458</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">color: black;
+background-color:qlineargradient(spread:reflect, x1:1, y1:0, x2:0.995, y2:1, stop:0 rgba(218, 218, 218, 255), stop:0.305419 rgba(0, 7, 11, 255), stop:0.935961 rgba(2, 11, 18, 255), stop:1 rgba(240, 240, 240, 255));
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox_5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>401</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: black;
+background-color: rgb(27, 37, 38);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+    </property>
+    <property name="title">
+     <string>종목 선정 및 감시가격/매수수량 관리</string>
+    </property>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>27</y>
+       <width>261</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>감시가격/매수수량 입력</string>
+     </property>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>51</x>
+        <y>20</y>
+        <width>56</width>
+        <height>12</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>매수가격</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>20</y>
+        <width>56</width>
+        <height>12</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>매수수량</string>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>154</x>
+        <y>40</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_1">
+      <property name="geometry">
+       <rect>
+        <x>53</x>
+        <y>40</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_3">
+      <property name="geometry">
+       <rect>
+        <x>52</x>
+        <y>74</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_4">
+      <property name="geometry">
+       <rect>
+        <x>153</x>
+        <y>74</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_5">
+      <property name="geometry">
+       <rect>
+        <x>52</x>
+        <y>107</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_6">
+      <property name="geometry">
+       <rect>
+        <x>153</x>
+        <y>107</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_8">
+      <property name="geometry">
+       <rect>
+        <x>153</x>
+        <y>140</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_7">
+      <property name="geometry">
+       <rect>
+        <x>52</x>
+        <y>140</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_9">
+      <property name="geometry">
+       <rect>
+        <x>52</x>
+        <y>224</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_10">
+      <property name="geometry">
+       <rect>
+        <x>153</x>
+        <y>224</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_11">
+      <property name="geometry">
+       <rect>
+        <x>52</x>
+        <y>255</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_12">
+      <property name="geometry">
+       <rect>
+        <x>153</x>
+        <y>255</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_13">
+      <property name="geometry">
+       <rect>
+        <x>51</x>
+        <y>286</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_14">
+      <property name="geometry">
+       <rect>
+        <x>152</x>
+        <y>286</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_15">
+      <property name="geometry">
+       <rect>
+        <x>51</x>
+        <y>317</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="textEdit_16">
+      <property name="geometry">
+       <rect>
+        <x>152</x>
+        <y>317</y>
+        <width>91</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="maximum">
+       <double>200000000.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>7</x>
+        <y>44</y>
+        <width>40</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>감시1</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>6</x>
+        <y>78</y>
+        <width>40</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>감시2</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>6</x>
+        <y>111</y>
+        <width>40</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>감시3</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>6</x>
+        <y>143</y>
+        <width>40</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>감시4</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>6</x>
+        <y>230</y>
+        <width>40</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>감시1</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>6</x>
+        <y>260</y>
+        <width>40</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>감시2</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>6</x>
+        <y>292</y>
+        <width>40</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>감시3</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>6</x>
+        <y>322</y>
+        <width>40</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>감시4</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>152</x>
+        <y>200</y>
+        <width>56</width>
+        <height>12</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>매도수량</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>200</y>
+        <width>56</width>
+        <height>12</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>매도가격</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>27</y>
+       <width>111</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>종목 추가</string>
+     </property>
+     <widget class="QTextEdit" name="searchItemTextEdit2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>45</y>
+        <width>81</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="additmelast">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>164</y>
+        <width>81</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(37, 37, 38);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;
+border-style: solid;
+border-width: 2px;
+border-color: #FFFF00;
+border-radius: 3px</string>
+      </property>
+      <property name="text">
+       <string>종목 추가</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>24</y>
+        <width>56</width>
+        <height>12</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>종목명</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>93</y>
+        <width>56</width>
+        <height>12</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>종목코드</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="searchItemTextEdit3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>114</y>
+        <width>81</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+background-color: rgb(30, 50, 30);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_4">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>10</y>
+      <width>621</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: black;
+background-color: rgb(27, 37, 38);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+    </property>
+    <property name="title">
+     <string>종목 최종 선정 : DB 관리</string>
+    </property>
+    <widget class="QPushButton" name="Deletcode">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+background-color: rgb(37, 37, 38);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;
+border-style: solid;
+border-width: 2px;
+border-color: #FFFF00;
+border-radius: 3px</string>
+     </property>
+     <property name="text">
+      <string>선정 종목 삭제</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Del_Stock">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>30</y>
+       <width>81</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+background-color: rgb(37, 37, 38);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;
+border-style: solid;
+border-width: 2px;
+border-color: #FFFF00;
+border-radius: 3px</string>
+     </property>
+     <property name="text">
+      <string>DB 삭제</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Load_Stock">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>30</y>
+       <width>75</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+background-color: rgb(37, 37, 38);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;
+border-style: solid;
+border-width: 2px;
+border-color: #FFFF00;
+border-radius: 3px</string>
+     </property>
+     <property name="text">
+      <string>DB 로드</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Save_Stock">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>30</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+background-color: rgb(37, 37, 38);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;
+border-style: solid;
+border-width: 2px;
+border-color: #FFFF00;
+border-radius: 3px</string>
+     </property>
+     <property name="text">
+      <string>DB 저장</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="buylast">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>591</width>
+       <height>322</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+background-color: rgb(150, 150, 150);
+font: 10pt &quot;맑은고딕&quot;;</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>10</y>
+      <width>120</width>
+      <height>403</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: black;
+background-color: rgb(27, 37, 38);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;</string>
+    </property>
+    <property name="title">
+     <string>실시간 자동매매</string>
+    </property>
+    <widget class="QPushButton" name="Start_Auto">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>130</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+background-color: rgb(37, 37, 38);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;
+border-style: solid;
+border-width: 2px;
+border-color: #FFFF00;
+border-radius: 3px</string>
+     </property>
+     <property name="text">
+      <string>자동매매 시작</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="stopevrything">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>190</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+background-color: rgb(37, 37, 38);
+color: rgb(255, 255, 255);
+font: 10pt &quot;맑은고딕&quot;;
+border-style: solid;
+border-width: 2px;
+border-color: #FFFF00;
+border-radius: 3px</string>
+     </property>
+     <property name="text">
+      <string>자동매매 종료</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1270</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
